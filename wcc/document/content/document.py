@@ -22,6 +22,7 @@ from wcc.document import MessageFactory as _
 from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
 from zope.interface import Interface
 
+
 # Interface class; used to define content-type schema.
 
 class IRelatedLinks(Interface):
@@ -37,14 +38,17 @@ class IDocument(form.Schema, IImageScaleTraversable):
 
     document_owner = schema.TextLine(
         title=_(u'Document Owner'),
+        required=False,
     )
 
     document_type = schema.TextLine(
         title=_(u'Document Type'),
+        required=False,
     )
 
     document_status = schema.TextLine(
         title=_(u'Document Status'),
+        required=False,
     )
 
     form.widget(related_links=DataGridFieldFactory)
@@ -52,4 +56,8 @@ class IDocument(form.Schema, IImageScaleTraversable):
         title=_(u'Related Links'),
         value_type=DictRow(schema=IRelatedLinks),
         required=False,
+    )
+
+    file = NamedBlobFile(title=_(u'File'),
+        required=False
     )
