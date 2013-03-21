@@ -29,6 +29,8 @@ setup(name='wcc.document',
           'plone.app.dexterity',
           'plone.namedfile [blobs]',
           'collective.grok',
+          'collective.z3cform.datagridfield',
+          'collective.miscbehaviors',
           # -*- Extra requirements: -*-
       ],
       extras_require={

@@ -19,14 +19,37 @@ from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.formwidget.contenttree import ObjPathSourceBinder
 
 from wcc.document import MessageFactory as _
-
+from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
+from zope.interface import Interface
 
 # Interface class; used to define content-type schema.
+
+class IRelatedLinks(Interface):
+    label = schema.TextLine(title=_(u'Title'))
+    url = schema.TextLine(title=(u'URL'))
+    description = schema.TextLine(title=_(u'Description'))
 
 class IDocument(form.Schema, IImageScaleTraversable):
     """
     Description of the Example Type
     """
-    pass
 
 
+    document_owner = schema.TextLine(
+        title=_(u'Document Owner'),
+    )
+
+    document_type = schema.TextLine(
+        title=_(u'Document Type'),
+    )
+
+    document_status = schema.TextLine(
+        title=_(u'Document Status'),
+    )
+
+    form.widget(related_links=DataGridFieldFactory)
+    related_links = schema.List(
+        title=_(u'Related Links'),
+        value_type=DictRow(schema=IRelatedLinks),
+        required=False,
+    )
