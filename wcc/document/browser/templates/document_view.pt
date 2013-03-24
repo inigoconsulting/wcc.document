@@ -22,6 +22,11 @@
 
         </div>
 
+        <tal:file tal:condition="context/file">
+            Download : 
+            <tal:r replace="structure python:view.widgets['file'].render()"/>
+        </tal:file>
+
         <tal:related condition="context/related_links">
             <h2>Related Links</h2>
             <ul>

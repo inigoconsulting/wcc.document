@@ -31,6 +31,7 @@ setup(name='wcc.document',
           'collective.grok',
           'collective.z3cform.datagridfield',
           'collective.miscbehaviors',
+          'wcc.activity',
           # -*- Extra requirements: -*-
       ],
       extras_require={
