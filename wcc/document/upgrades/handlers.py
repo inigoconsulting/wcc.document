@@ -1,5 +1,6 @@
 from collective.grok import gs
 from Products.CMFCore.utils import getToolByName
+from plone.app.dexterity.behaviors.exclfromnav import IExcludeFromNavigation
 
 # -*- extra stuff goes here -*- 
 
@@ -20,7 +21,9 @@ def to1003(context):
                                     Language='all'):
         obj = brain.getObject()
         obj.reindexObject()
-
+        adapted = IExcludeFromNavigation(obj)
+        adapted.exclude_from_nav = False
+        obj.reindexObject()
 
 @gs.upgradestep(title=u'Upgrade wcc.document to 1002',
                 description=u'Upgrade wcc.document to 1002',
