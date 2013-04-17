@@ -15,9 +15,7 @@ def to1003(context):
 
     catalog = getToolByName(context, 'portal_catalog')
 
-    for brain in catalog(portal_type=['wcc.churches.churchmember',
-                                    'wcc.churches.churchfamily',
-                                    'wcc.churches.churchbody'],
+    for brain in catalog(portal_type=['wcc.document.document'],
                                     Language='all'):
         obj = brain.getObject()
         obj.reindexObject()
