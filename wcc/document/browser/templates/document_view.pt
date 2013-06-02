@@ -18,6 +18,10 @@
 <metal:main fill-slot="content-core">
     <metal:content-core define-macro="content-core">
 
+        <tal:block tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+            <p><b tal:content="python:toLocalizedTime(context.Date())"></b></p>
+        </tal:block>
+        
         <div class="bodytext" tal:content="structure context/text|nothing">
 
         </div>
