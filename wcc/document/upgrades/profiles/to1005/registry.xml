@@ -1,7 +1,7 @@
 <registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
           i18n:domain="wcc.document">
     <records interface="plone.app.querystring.interfaces.IQueryField"
-             prefix="wcc.document.document.field.DocumentOwner">
+             prefix="plone.app.querystring.field.document_owner">
         <value key="title" i18n:translate="">Document Owner</value>
         <value key="description" i18n:translate="">Document Owner</value>
         <value key="enabled">True</value>
@@ -9,11 +9,11 @@
         <value key="operations">
             <element>plone.app.querystring.operation.selection.is</element>
         </value>
-       <value key="vocabulary">plone.app.vocabularies.Keywords</value>
+       <value key="vocabulary">wcc.document.document_owner</value>
        <value key="group" i18n:translate="">Text</value>
     </records>
     <records interface="plone.app.querystring.interfaces.IQueryField"
-             prefix="wcc.document.document.field.DocumentType">
+             prefix="plone.app.querystring.field.document_type">
         <value key="title" i18n:translate="">Document Type</value>
         <value key="description" i18n:translate="">Document Type</value>
         <value key="enabled">True</value>
@@ -21,7 +21,7 @@
         <value key="operations">
             <element>plone.app.querystring.operation.selection.is</element>
         </value>
-       <value key="vocabulary">plone.app.vocabularies.Keywords</value>
+       <value key="vocabulary">wcc.document.document_type</value>
        <value key="group" i18n:translate="">Text</value>
     </records>
 </registry>

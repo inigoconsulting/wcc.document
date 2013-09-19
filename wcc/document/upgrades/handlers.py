@@ -99,18 +99,32 @@ def to1005(context):
             'Joint Working Group'
     }
 
-    brains = context.portal_catalog({'portal_type': 'wcc.document.document'})
+    brains = context.portal_catalog({'portal_type': 'wcc.document.document',
+        'Language': 'all'})
 
     for b in brains:
         obj = b.getObject()
         dt = getattr(b, 'document_type', u'')
-        t = document_type_map.get(dt, dt)
-        obj.document_type = [t]
+        try:
+            t = document_type_map.get(dt, dt)
+            obj.document_type = [t]
+        except TypeError:
+            pass
+
 
         do = getattr(b, 'document_owner', u'')
-        o = document_owner_map.get(do, do)
-        obj.document_owner = o
+        try:
+            o = document_owner_map.get(do, do)
+            obj.document_owner = o
+        except TypeError:
+            pass
+
         obj.reindexObject()
+
+    context.portal_catalog.reindexIndex('document_owner', context.REQUEST)
+    context.portal_catalog.reindexIndex('document_type', context.REQUEST)
+
+
 
 @gs.upgradestep(title=u'Upgrade wcc.document to 1004',
                 description=u'Upgrade wcc.document to 1004',
