@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<atcttool
+ xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <topic_indexes>
+ <index name="document_owner"
+     description="Document Owner"
+     enabled="True" friendlyName="Document Owner">
+     <criteria>ATSelectionCriterion</criteria>
+     <criteria>ATSimpleStringCriterion</criteria>
+ </index>
+ </topic_indexes>
+ <topic_metadata>
+     <metadata name="document_owner"
+               description="Document Owner" enabled="True"
+               friendlyName="Document Owner"/>
+ </topic_metadata>
+
+ <topic_indexes>
+ <index name="document_type"
+     description="Document Type"
+     enabled="True" friendlyName="Document Type">
+     <criteria>ATSelectionCriterion</criteria>
+     <criteria>ATSimpleStringCriterion</criteria>
+ </index>
+ </topic_indexes>
+ <topic_metadata>
+     <metadata name="document_type"
+               description="Document Type" enabled="True"
+               friendlyName="Document Type"/>
+ </topic_metadata>
+
+</atcttool>

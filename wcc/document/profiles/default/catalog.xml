@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_catalog" meta_type="CMF Catalog">
+ <index name="document_owner" meta_type="FieldIndex">
+  <indexed_attr value="document_owner"/>
+ </index>
+ <column value="document_owner"/>
+ <index name="document_type" meta_type="KeywordIndex">
+  <indexed_attr value="document_type"/>
+ </index>
+ <column value="document_type"/>
+</object>

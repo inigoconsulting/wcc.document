@@ -36,13 +36,17 @@ class IDocument(form.Schema, IImageScaleTraversable):
     """
 
 
-    document_owner = schema.TextLine(
+    document_owner = schema.Choice(
         title=_(u'Document Owner'),
+        vocabulary='wcc.document.document_owner',
         required=False,
     )
 
-    document_type = schema.TextLine(
+    document_type = schema.List(
         title=_(u'Document Type'),
+        value_type=schema.Choice(
+            vocabulary='wcc.document.document_type',
+        ),
         required=False,
     )
 
