@@ -27,8 +27,7 @@
         </div>
 
         <tal:file tal:condition="context/file">
-            Download : 
-            <tal:r replace="structure python:view.widgets['file'].render()"/>
+            Download : <a tal:attributes="href string:${context/absolute_url}/@@download/file/${context/file/filename}" tal:content="context/file/filename"></a>
         </tal:file>
 
         <tal:related condition="context/related_links">
