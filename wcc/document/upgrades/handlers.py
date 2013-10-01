@@ -20,9 +20,12 @@ def to1006(context):
         obj = b.getObject()
         dt = getattr(b, 'document_type', [])
         if dt:
-            obj.document_type = t[0]
+            obj.document_type = dt[0]
         else:
             obj.document_type = None
+        obj.reindexObject()
+
+    context.portal_catalog.reindexIndex('document_type', context.REQUEST)
 
 
 @gs.upgradestep(title=u'Upgrade wcc.document to 1005',
