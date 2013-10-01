@@ -42,11 +42,9 @@ class IDocument(form.Schema, IImageScaleTraversable):
         required=False,
     )
 
-    document_type = schema.List(
+    document_type = schema.Choice(
         title=_(u'Document Type'),
-        value_type=schema.Choice(
-            vocabulary='wcc.document.document_type',
-        ),
+        vocabulary='wcc.document.document_type',
         required=False,
     )
 
