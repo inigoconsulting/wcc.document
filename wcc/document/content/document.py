@@ -20,8 +20,10 @@ from plone.formwidget.contenttree import ObjPathSourceBinder
 
 from wcc.document import MessageFactory as _
 from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
-from zope.interface import Interface
+from zope.interface import Interface, alsoProvides
 from plone.multilingualbehavior.directives import languageindependent
+from plone.app.dexterity.behaviors.metadata import ICategorization
+from plone.multilingualbehavior.interfaces import ILanguageIndependentField
 
 
 # Interface class; used to define content-type schema.
@@ -65,3 +67,5 @@ class IDocument(form.Schema, IImageScaleTraversable):
     file = NamedBlobFile(title=_(u'File'),
         required=False
     )
+
+alsoProvides(ICategorization['subjects'], ILanguageIndependentField)
