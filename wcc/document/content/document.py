@@ -21,6 +21,7 @@ from plone.formwidget.contenttree import ObjPathSourceBinder
 from wcc.document import MessageFactory as _
 from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
 from zope.interface import Interface
+from plone.multilingualbehavior.directives import languageindependent
 
 
 # Interface class; used to define content-type schema.
@@ -35,13 +36,14 @@ class IDocument(form.Schema, IImageScaleTraversable):
     Description of the Example Type
     """
 
-
+    languageindependent('document_owner')
     document_owner = schema.Choice(
         title=_(u'Document Owner'),
         vocabulary='wcc.document.document_owner',
         required=False,
     )
 
+    languageindependent('document_type')
     document_type = schema.Choice(
         title=_(u'Document Type'),
         vocabulary='wcc.document.document_type',
