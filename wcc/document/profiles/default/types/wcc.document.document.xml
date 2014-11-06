@@ -24,6 +24,7 @@
      <element value="plone.multilingualbehavior.interfaces.IDexterityTranslatable"/>
      <element value="wcc.activity.behavior.activitytag.IActivityTag"/>
      <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
+     <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer"/>
    </property>
 
   <!-- View information -->
