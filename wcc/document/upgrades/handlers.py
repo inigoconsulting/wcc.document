@@ -5,6 +5,23 @@ from plone.app.dexterity.behaviors.exclfromnav import IExcludeFromNavigation
 # -*- extra stuff goes here -*- 
 
 
+@gs.upgradestep(title=u'Upgrade wcc.document to 1007',
+                description=u'Upgrade wcc.document to 1007',
+                source='1006', destination='1007',
+                sortkey=1, profile='wcc.document:default')
+def to1007(context):
+    setup = getToolByName(context, 'portal_setup')
+    setup.runAllImportStepsFromProfile('profile-wcc.document.upgrades:to1007')
+
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog({'portal_type': 'wcc.document.document',
+                     'Language': 'all'})
+
+    for brain in brains:
+        obj = brain.getObject()
+        obj.reindexObject()
+
+
 @gs.upgradestep(title=u'Upgrade wcc.document to 1006',
                 description=u'Upgrade wcc.document to 1006',
                 source='1005', destination='1006',
