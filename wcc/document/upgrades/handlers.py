@@ -5,6 +5,15 @@ from plone.app.dexterity.behaviors.exclfromnav import IExcludeFromNavigation
 # -*- extra stuff goes here -*- 
 
 
+@gs.upgradestep(title=u'Upgrade wcc.document to 1008',
+                description=u'Upgrade wcc.document to 1008',
+                source='1007', destination='1008',
+                sortkey=1, profile='wcc.document:default')
+def to1008(context):
+    setup = getToolByName(context, 'portal_setup')
+    setup.runAllImportStepsFromProfile('profile-wcc.document.upgrades:to1008')
+
+
 @gs.upgradestep(title=u'Upgrade wcc.document to 1007',
                 description=u'Upgrade wcc.document to 1007',
                 source='1006', destination='1007',
