@@ -48,7 +48,7 @@
     <tal:listing condition="batch">
 
         <div metal:define-slot="entries">
-            <article class="wcc-books-item" tal:repeat="item batch" metal:define-macro="entries">
+            <article class="wcc-document-item" tal:repeat="item batch" metal:define-macro="entries">
             <tal:block tal:define="item_url item/getURL|item/absolute_url;
                                    item_id item/getId|item/id;
                                    item_title_or_id item/pretty_title_or_id;
@@ -79,59 +79,21 @@
                             Item Title
                         </a>
                     </span>
-                    <span>
-
-                    </span>
                     
-
-                    <span class="documentByLine">
-                         <tal:byline condition="show_about">
-                            &mdash;
-
-                            <tal:name tal:condition="item_creator"
-                                tal:define="author python:pas_member.info(item_creator);
-                                            creator_short_form author/username;
-                                            creator_long_form string:?author=${author/username};
-                                            creator_is_openid python:'/' in creator_short_form;
-                                            creator_id python:(creator_short_form, creator_long_form)[creator_is_openid];">
-                              <span i18n:translate="label_by_author">
-                                by
-                              <a href="#"
-                                 tal:attributes="href string:${navigation_root_url}/author/${item_creator}"
-                                 tal:content="author/name_or_id"
-                                 tal:omit-tag="not:author"
-                                 i18n:name="author">
-                                Bob Dobalina
-                              </a>
-                              </span>
-
-                            </tal:name>
-
-                            <tal:modified condition="python: item_type != 'Event'">
-                                &mdash;
-                                <tal:mod i18n:translate="box_last_modified">
-                                  last modified
-                                </tal:mod>
-                                <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
-                                  August 16, 2001 at 23:35:59
-                                </span>
-                            </tal:modified>
-
-                            <metal:description define-slot="description_slot">
-                                <tal:comment replace="nothing">
-                                    Place custom listing info for custom types here
-                                </tal:comment>
-                            </metal:description>
-                        </tal:byline>
-                    </span>
 
                 </header>
 
-                <div class="wcc-books-description"
+                <div class="wcc-document-description"
                     tal:condition="item_description"
-                    tal:content="python: ' '.join(item_description.split()[:50]) + '...'">
+                    tal:content="item_description">
                     description
                 </div>
+
+                <div class="wcc-document-effective-date" tal:content="python:toLocalizedTime(item.EffectiveDate,long_format=1)">
+                August 16, 2001 at 23:35:59
+                </div>
+
+
 
 
             </metal:block>
@@ -141,12 +103,6 @@
 
         <div metal:use-macro="context/batch_macros/macros/navigation" />
         
-        <tal:block define="listingview nocall:context/bookslisting">
-        <div>
-            <a tal:attributes="href string: ${context/absolute_url}/bookcsv" class="wcc-books-button">Get CSV</a>
-            <a tal:attributes="href string: ${context/absolute_url}/bookjson" class="wcc-books-button">Get JSON</a>
-        </div>
-        </tal:block>
 
     </tal:listing>
     <metal:empty metal:define-slot="no_items_in_listing">
