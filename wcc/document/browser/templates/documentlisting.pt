@@ -89,7 +89,7 @@
                     description
                 </div>
 
-                <div class="wcc-document-effective-date" tal:content="python:toLocalizedTime(item.EffectiveDate,long_format=1)">
+                <div class="wcc-document-effective-date" tal:content="python:toLocalizedTime(item.EffectiveDate)">
                 August 16, 2001 at 23:35:59
                 </div>
 
